@@ -5,8 +5,9 @@ function validacion(){
     var va = validarNA(document.getElementById('lastname'), 'mapellido')
     var vf = validarFecha();
     var vco = verificarCorreo();
+    var vps = verificarContrasena();
 
-    if(vc==false || vn==false || va==false || vf==false || vco==false){
+    if(vc==false || vn==false || va==false || vf==false || vco==false || vps==false){
         bandera = false;
     }
 
@@ -230,4 +231,51 @@ function verificarCorreo(){
 
 }
 
+//VERIFICAR CONTRASENIA
+function verificarContrasena(){
+    var bandera = true;
+    var senmayus = false;
+    var senminus = false;
+    var may;
+    var min;
+    var ltascii;
+    var contra = document.getElementById('password').value;
+    
+    if(contra.length>=8){
+        if(contra.includes('_')==true || contra.includes('@')==true || contra.includes('$')==true){
+            
+            for(var i=0; i<contra.length; i++){
+                ltascii = contra.charCodeAt(i);
+                if((ltascii>=65 && ltascii<=90) || (ltascii>=97 && ltascii<=122)){
+                    may = contra.charAt(i).toUpperCase();
+                    min = contra.charAt(i).toLowerCase();
+                    if(contra.charCodeAt(i)===may.charCodeAt(0)){
+                        senmayus = true;
+                    }
+                    if(contra.charCodeAt(i)===min.charCodeAt(0)){
+                        senminus = true;
+                    }
+                    if(senmayus==true && senminus==true){
+                        i = contra.length;
+                    }
+                }
+                
+            }
+            if(senmayus==true && senminus==true){
+                arreglo(document.getElementById('password'), 'mcontrasena');
+                bandera = true;
+            }else{
+                error(document.getElementById('password'), 'mcontrasena', '<br>La contrasena no contiene mayusculas o minusculas')
+                bandera = false;
+            }
+        }else{
+            error(document.getElementById('password'), 'mcontrasena', '<br>La contrasena no contiene caracteres especiales')
+            bandera = false;
+        }
+    }else{
+        error(document.getElementById('password'), 'mcontrasena', '<br>Contraseña muy corta')
+        bandera = false;
+    }
+    return bandera;
+}
 

@@ -45,3 +45,8 @@ input#agregar{
 div{
     clear: both;
 }
+
+span{
+    display: block;
+    margin-left: 50px
+}
