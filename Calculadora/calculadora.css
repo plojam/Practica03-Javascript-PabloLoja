@@ -1,0 +1,55 @@
+body{
+    background-color: rgb(47, 58, 69);
+}
+
+section{
+    /*margin: 13% 35%;
+    width: 650px;
+    height: 400px;
+    */
+    margin-left: 35%;
+    margin-top: 13%;
+    width: 33%;
+    height: 50%;
+    background-color: darkgray;
+    border-radius: 10px;
+}
+
+h2{
+    text-align: center;
+}
+
+input[type=text]{
+    background-color: whitesmoke;
+    width: 94%;
+    height: 35px;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom: 20px;
+    text-indent: 10px;
+    font-size: 120%;
+}
+
+input[type=button]{
+    background-color: rgb(234, 234, 234);
+    float: left;
+    margin: 2% 3%;
+    width: 13%;
+    height: 50px;
+    font-size: 20px;
+}
+
+#cuatro, #uno, #cero, #siete{
+    clear: both;
+    margin-left: 6%;
+}
+
+
+
+input[type=button]:hover{
+    background-color: rgb(181, 224, 246);
+}
+
+div{
+    clear: both;
+}
