@@ -15,28 +15,28 @@
         <fieldset>
             <legend>Formulario</legend>
             <label>Cedula</label>
-            <input type="text" id="dni" onkeyup="return noLetras(this)"/>
+            <input type="text" id="dni" placeholder="Ej. 9999999999" onkeyup="return noLetras(this)"/>
             <span id="mcedula" class="error"></span>
             <label>Nombres</label>
-            <input type="text" id="name" onkeyup="return noNumeros(this)"/>
+            <input type="text" id="name" placeholder="Ej. Pablo Esteban" onkeyup="return noNumeros(this)"/>
             <span id="mnombre" class="error"></span>
             <label>Apellidos</label>
-            <input type="text" id="lastname" onkeyup="return noNumeros(this)"/>
+            <input type="text" id="lastname" placeholder="Ej. Loja Morocho" onkeyup="return noNumeros(this)"/>
             <span id="mapellido" class="error"></span>
             <label>Direccion</label>
-            <input type="text" id="address" />
-            <!--<span id="mdirecicon" class="error"></span>-->
+            <input type="text" id="address" placeholder="Ej. Av. calle1"/>
+            <span id="mdireccion" class="error"></span>
             <label>Telefono</label>
-            <input type="text" id="telf" onkeyup="return validarTelefono(this)"/>
-            <!--<span id="mtelefono" class="error"></span>-->
+            <input type="text" id="telf" placeholder="Ej. 9999999999" onkeyup="return validarTelefono(this)"/>
+            <span id="mtelefono" class="error"></span>
             <label>Fecha de nacimiento</label>
-            <input type="text" id="nac" onkeyup="return soloFecha(this)"/>
+            <input type="text" id="nac" placeholder="Ej. 20/01/1999" onkeyup="return soloFecha(this)"/>
             <span id="mnac" class="error" ></span>
             <label>E-mail</label>
-            <input type="text" id="email" />
+            <input type="text" id="email" placeholder="Ej. usu1@est.ups.edu.ec / usu2@ups.edu.ec"/>
             <span id="mmail" class="error"></span>
             <label>Contraseña</label>
-            <input type="password" id="password" />
+            <input type="password" id="password" placeholder="Ej. Ingrese su contraseña aqui"/>
             <span id="mcontrasena" class="error"></span>
             <input id="agregar" type="submit" value="Agregar" />
             <input id="cancelar" type="reset" value="Cancelar">

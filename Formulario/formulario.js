@@ -6,9 +6,13 @@ function validacion(){
     var vf = validarFecha();
     var vco = verificarCorreo();
     var vps = verificarContrasena();
+    var vd = verificarDT(document.getElementById('address'), 'mdireccion');
+    var vt = verificarDT(document.getElementById('telf'), 'mtelefono');
 
     if(vc==false || vn==false || va==false || vf==false || vco==false || vps==false){
         bandera = false;
+    }else{
+        alert('Datos ingresados correctamente');
     }
 
     return bandera;
@@ -161,16 +165,17 @@ function soloFecha(fec){
             fec.value = fec.value.substring(0, fec.value.length-1);
             return false;
         }else{
-            if(fec.value.length==2 || fec.value.length==5){
-                fec.value = fec.value+'/';
-            }
             var feca = fec.value.charCodeAt(fec.value.length-1);
             if(feca>=47 && feca<=57){
+                if(fec.value.length==2 || fec.value.length==5){
+                    fec.value = fec.value+'/';
+                }
                 return true;
             }else{
                 fec.value = fec.value.substring(0, fec.value.length-1);
                 return false;
             }
+            
         }
     }else{
         return true;
@@ -279,3 +284,15 @@ function verificarContrasena(){
     return bandera;
 }
 
+//Verificar direccion y telefono
+function verificarDT(atrib, mens){
+    var bandera = true;
+    if(atrib.value.length > 0){
+        arreglo(atrib, mens);
+        bandera = true;
+    }else{
+        error(atrib, mens, '<br>El campo esta vacio')
+        bandera = false;
+    }
+    return bandera;
+}
