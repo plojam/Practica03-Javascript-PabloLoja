@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <title>Formulario</title>
+    <link rel="stylesheet" type="text/css" href="Formulario.css"/>
+    <script type="text/javascript" src="formu.js"></script>
+    </script>
+    <meta charset="utf-8" />
+    
+</head>
+<body>
+    <form onsubmit="return validacion()">
+        <fieldset>
+            <legend>Formulario</legend>
+            <label>Cedula</label>
+            <input type="text" id="dni" onkeyup="return noLetras(this)"/>
+            <span id="mcedula" class="error"></span>
+            <label>Nombres</label>
+            <input type="text" id="name" onkeyup="return noNumeros(this)"/>
+            <span id="mnombre" class="error"></span>
+            <label>Apellidos</label>
+            <input type="text" id="lastname" onkeyup="return noNumeros(this)"/>
+            <span id="mapellido" class="error"></span>
+            <label>Direccion</label>
+            <input type="text" id="address" />
+            <span id="mdirecicon" class="error"></span>
+            <label>Telefono</label>
+            <input type="text" id="telf" />
+            <span id="mtelefono" class="error"></span>
+            <label>Fecha de nacimiento</label>
+            <input type="text" id="nac" />
+            <span id="mnac" class="error"></span>
+            <label>E-mail</label>
+            <input type="text" id="email" />
+            <span id="mmail" class="error"></span>
+            <label>Contraseña</label>
+            <input type="text" id="password" />
+            <span id="mcontrasena" class="error"></span>
+            <input id="agregar" type="submit" value="Agregar" />
+            <input id="cancelar" type="reset" value="Cancelar">
+            <div></div>
+        </fieldset>
+    </form>
+
+</body>
+
+</html>
