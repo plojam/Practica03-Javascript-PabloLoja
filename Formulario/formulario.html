@@ -4,8 +4,8 @@
 <head>
 
     <title>Formulario</title>
-    <link rel="stylesheet" type="text/css" href="Formulario.css"/>
-    <script type="text/javascript" src="formu.js"></script>
+    <link rel="stylesheet" type="text/css" href="formulario.css"/>
+    <script type="text/javascript" src="formulario.js"></script>
     </script>
     <meta charset="utf-8" />
     
@@ -25,10 +25,10 @@
             <span id="mapellido" class="error"></span>
             <label>Direccion</label>
             <input type="text" id="address" />
-            <span id="mdirecicon" class="error"></span>
+            <!--<span id="mdirecicon" class="error"></span>-->
             <label>Telefono</label>
-            <input type="text" id="telf" />
-            <span id="mtelefono" class="error"></span>
+            <input type="text" id="telf" onkeyup="return validarTelefono(this)"/>
+            <!--<span id="mtelefono" class="error"></span>-->
             <label>Fecha de nacimiento</label>
             <input type="text" id="nac" />
             <span id="mnac" class="error"></span>

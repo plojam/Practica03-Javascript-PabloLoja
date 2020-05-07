@@ -11,6 +11,7 @@ function validacion(){
     return bandera;
 }
 
+//LIMITACION CARACTERES
 function noLetras(cedula){
     if(cedula.value.length >0){
         var valorCed = cedula.value.charCodeAt(cedula.value.length-1);
@@ -19,6 +20,7 @@ function noLetras(cedula){
             return true;
         }else{
             cedula.value = cedula.value.substring(0, cedula.value.length-1);
+            return false;
         }
     }else{
         return true;
@@ -26,27 +28,30 @@ function noLetras(cedula){
 }
 
 function noNumeros(texto){
-    var bandera = true;
     if(texto.value.length > 0){
-        var as = texto.value.charCodeAt(texto.value.length-1)
+        var as = texto.value.charCodeAt(texto.value.length-1);
 
         if((as >= 97 && as <= 122)||(as>=65 && as<=90) || as==32){
-            return true
+            return true;
         }else {
-            texto.value = texto.value.substring(0, texto.value.length-1)
-            return false
+            texto.value = texto.value.substring(0, texto.value.length-1);
+            return false;
         }
     }else{
     return true;
     }
 }
 
+
+//FORMATO ERROR
 function error(inp, spa, men){
     document.getElementById(spa).innerHTML = men;
     inp.style.border = '2px red solid';
     inp.className = 'error';
 }
 
+
+//VALIDACION CEDULA
 function validarCedula (){
     var bandera = true;
     var ced = document.getElementById("dni");
@@ -88,6 +93,7 @@ function validarCedula (){
 }
 
 
+//VALIDACION NOMBRES Y APELLIDOS
 function validarNA(atri, men){
     var bandera = true;
     if(atri.value!==''){
@@ -107,3 +113,26 @@ function validarNA(atri, men){
     }*/
     return bandera;
 }
+
+
+//VALIDACION 
+function validarTelefono(telef){
+    if(telef.value.length > 0){
+        if(telef.value.length > 10){
+            telef.value = telef.value.substring(0, telef.value.length-1);
+            return false;
+        }else{
+            var numa = telef.value.charCodeAt(telef.value.length-1);
+            if(numa>=48 && numa<=57){
+                return true;
+            }else{
+                telef.value = telef.value.substring(0, telef.value.length-1);
+                return false;
+            }
+        }
+        
+    }else{
+        return true;
+    }
+}
+
