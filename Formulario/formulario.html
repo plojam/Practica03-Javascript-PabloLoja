@@ -30,13 +30,13 @@
             <input type="text" id="telf" onkeyup="return validarTelefono(this)"/>
             <!--<span id="mtelefono" class="error"></span>-->
             <label>Fecha de nacimiento</label>
-            <input type="text" id="nac" />
-            <span id="mnac" class="error"></span>
+            <input type="text" id="nac" onkeyup="return soloFecha(this)"/>
+            <span id="mnac" class="error" ></span>
             <label>E-mail</label>
             <input type="text" id="email" />
             <span id="mmail" class="error"></span>
             <label>Contraseña</label>
-            <input type="text" id="password" />
+            <input type="password" id="password" />
             <span id="mcontrasena" class="error"></span>
             <input id="agregar" type="submit" value="Agregar" />
             <input id="cancelar" type="reset" value="Cancelar">
