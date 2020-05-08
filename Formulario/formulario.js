@@ -1,5 +1,7 @@
+var vgeneral = [false, false, false, false, false, false, false, false];
+
 function validacion(){
-    var bandera = true;
+    var bandera = true;/*
     var vc = validarCedula();
     var vn = validarNA(document.getElementById('name'), 'mnombre');
     var va = validarNA(document.getElementById('lastname'), 'mapellido')
@@ -7,7 +9,13 @@ function validacion(){
     var vco = verificarCorreo();
     var vps = verificarContrasena();
     var vd = verificarDT(document.getElementById('address'), 'mdireccion');
-    var vt = verificarDT(document.getElementById('telf'), 'mtelefono');
+    var vt = verificarDT(document.getElementById('telf'), 'mtelefono');*/
+    for(var i=0; i<8 ; i++){
+        if(vgeneral[i]==false){
+            bandera = false;
+            i = 8;
+        }
+    }
 
     if(vc==false || vn==false || va==false || vf==false || vco==false || vps==false){
         bandera = false;
@@ -68,13 +76,14 @@ function arreglo(inp, spa){
 
 
 //VALIDACION CEDULA
-function validarCedula (){
+function validarCedula (id){
     var bandera = true;
     var ced = document.getElementById("dni");
     //console.log(ced.length)
     if(ced.value.length!==10 && ced.type == 'text'){
         error(ced, 'mcedula', '<br>Datos invalidos')
         bandera = false;
+        vgeneral[id]=bandera;
     }else{
         var suma =0;
         for(var i=0; i<(ced.value.length-1); i++){
@@ -97,9 +106,11 @@ function validarCedula (){
         if(resul !== (ced.value.charCodeAt(9)-48)){
             error(ced, 'mcedula', '<br>La cedula ingresada no es correcta')
             bandera = false;
+            vgeneral[id]=bandera;
         }else{
             arreglo(ced, 'mcedula');
             bandera = true;
+            vgeneral[id]=bandera;
         }
 
     }
@@ -113,7 +124,7 @@ function validarCedula (){
 
 
 //VALIDACION NOMBRES Y APELLIDOS
-function validarNA(atri, men){
+function validarNA(atri, men, id){
     var bandera = true;
     if(atri.value!==''){
         var partes = atri.value.split(" ");
@@ -121,13 +132,16 @@ function validarNA(atri, men){
         if(partes.length !== 2 || partes[0]=='' || partes[1]==''){
             error(atri, men, '<br>Los datos ingresados no son aceptados')
             bandera = false;
+            vgeneral[id]=bandera;
         }else{
             arreglo(atri, men);
             bandera = true;
+            vgeneral[id]=bandera;
         }
     }else{
         error(atri, men, '<br>Los datos ingresados no son aceptados')
         bandera = false;
+        vgeneral[id]=bandera;
     }
     /*
     if(bandera == true){
@@ -182,7 +196,7 @@ function soloFecha(fec){
     }
 }
 
-function validarFecha(){
+function validarFecha(id){
     var bandera = true;
     var fecha = document.getElementById("nac").value
     var partes = fecha.split("/");
@@ -191,6 +205,7 @@ function validarFecha(){
         if(partes.length!==3 || partes[0].length!==2 || partes[1].length!==2 || partes[2].length!==4){
             error(document.getElementById("nac"), 'mnac', '<br>Los datos no estan en el formato')
             bandera = false;
+            vgeneral[id]=bandera;
         }else{
             //console.log(partes[0]);
             //console.log(partes[1]);
@@ -198,20 +213,23 @@ function validarFecha(){
             if(partes[0]<32 && partes[1]<13 && partes[2]<2021){
                 arreglo(document.getElementById("nac"), 'mnac');
                 bandera = true;
+                vgeneral[id]=bandera;
             }else{
                 error(document.getElementById("nac"), 'mnac', '<br>Los datos no son una fecha valida')
                 bandera = false;
+                vgeneral[id]=bandera;
             }
         }
     }else{
         error(document.getElementById("nac"), 'mnac', '<br>Los datos no estan completos');
         bandera = false;
+        vgeneral[id]=bandera;
     }
     return bandera;
 }
 
 //VERIFICACION DE CORREO
-function verificarCorreo(){
+function verificarCorreo(id){
     var bandera = true;
     var corr = document.getElementById("email").value;
     var partes = corr.split("@");
@@ -221,23 +239,27 @@ function verificarCorreo(){
             if(partes[1]=='ups.edu.ec' || partes[1]=='est.ups.edu.ec'){
                 arreglo(document.getElementById("email"), 'mmail');
                 bandera = true;
+                vgeneral[id]=bandera;
             }else{
                 error(document.getElementById("email"), 'mmail', '<br>El correo no pertenece a la UPS')
                 bandera = false;
+                vgeneral[id]=bandera;
             }
         }else{
             error(document.getElementById("email"), 'mmail', '<br>El nombre de la cuenta es muy corta')
             bandera = false;
+            vgeneral[id]=bandera;
         }
     }else{
         error(document.getElementById("email"), 'mmail', '<br>El dato ingresado no es un correo electronico')
         bandera = false;
+        vgeneral[id]=bandera;
     }
 
 }
 
 //VERIFICAR CONTRASENIA
-function verificarContrasena(){
+function verificarContrasena(id){
     var bandera = true;
     var senmayus = false;
     var senminus = false;
@@ -269,30 +291,36 @@ function verificarContrasena(){
             if(senmayus==true && senminus==true){
                 arreglo(document.getElementById('password'), 'mcontrasena');
                 bandera = true;
+                vgeneral[id]=bandera;
             }else{
                 error(document.getElementById('password'), 'mcontrasena', '<br>La contrasena no contiene mayusculas o minusculas')
                 bandera = false;
+                vgeneral[id]=bandera;
             }
         }else{
             error(document.getElementById('password'), 'mcontrasena', '<br>La contrasena no contiene caracteres especiales')
             bandera = false;
+            vgeneral[id]=bandera;
         }
     }else{
         error(document.getElementById('password'), 'mcontrasena', '<br>Contraseña muy corta')
         bandera = false;
+        vgeneral[id]=bandera;
     }
     return bandera;
 }
 
 //Verificar direccion y telefono
-function verificarDT(atrib, mens){
+function verificarDT(atrib, mens, id){
     var bandera = true;
     if(atrib.value.length > 0){
         arreglo(atrib, mens);
         bandera = true;
+        vgeneral[id]=bandera;
     }else{
         error(atrib, mens, '<br>El campo esta vacio')
         bandera = false;
+        vgeneral[id]=bandera;
     }
     return bandera;
 }
