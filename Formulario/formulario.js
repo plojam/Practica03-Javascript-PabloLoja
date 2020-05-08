@@ -27,20 +27,20 @@ function validacion(){
 }
 
 //LIMITACION CARACTERES
-function noLetras(cedula){
-    if(cedula.value.length >0){
-        var valorCed = cedula.value.charCodeAt(cedula.value.length-1);
-
-        if(cedula.value.length>10){
-            cedula.value = cedula.value.substring(0, cedula.value.length-1);
+function noLetras(texto){
+    if(texto.value.length >0){
+        if(texto.value.length>10){
+            texto.value = texto.value.substring(0, texto.value.length-1);
             return false;
-        }
-        if(valorCed >= 48 && valorCed <= 57){
-            return true;
         }else{
-            cedula.value = cedula.value.substring(0, cedula.value.length-1);
-            return false;
-        }
+            var valor = texto.value.charCodeAt(texto.value.length-1);
+            if(valor >= 48 && valor <= 57){
+                return true;
+            }else{
+                texto.value = texto.value.substring(0, texto.value.length-1);
+                return false;
+            }
+        } 
     }else{
         return true;
     }
@@ -152,24 +152,7 @@ function validarNA(atri, men, id){
 
 
 //VALIDACION telefono
-function validarTelefono(telef){
-    if(telef.value.length > 0){
-        if(telef.value.length > 10){
-            telef.value = telef.value.substring(0, telef.value.length-1);
-            return false;
-        }else{
-            var numa = telef.value.charCodeAt(telef.value.length-1);
-            if(numa>=48 && numa<=57){
-                return true;
-            }else{
-                telef.value = telef.value.substring(0, telef.value.length-1);
-                return false;
-            }
-        }
-    }else{
-        return true;
-    }
-}
+
 
 
 //VALIDAR FECHA

@@ -8,15 +8,18 @@
     <script type="text/javascript" src="galeria.js"></script>
 </head>
 
-<body>
+<body onload="generarImagenes()">
     <section>
         <h3>Galeria</h3>
-        <aside>
-            <img id="im1" src="images/i0.jpg" alt="">
-        </aside>
-        <input type="button" value="Anterior" id="anterior">
+        <div id="d1">
+            <img id="i1" src="images/i0.jpg" alt="">
+        </div>
+        <div id="d2">
+            <img id="i2" src="images/i2.jpg" alt="">
+        </div>
+        <input type="button" value="Anterior" id="anterior" onclick="bloIn(), anterior()" >
         <input type="button" value="Iniciar" id="iniciar" onclick="generarImagenes()">
-        <input type="button" value="Siguiente" id="siguiente">
+        <input type="button" value="Siguiente" id="siguiente"  onclick="bloSu(), siguiente()" >
     </section>
 </body>
 
