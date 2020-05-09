@@ -1,26 +1,24 @@
 var vgeneral = [false, false, false, false, false, false, false, false];
 
 function validacion(){
-    var bandera = true;/*
-    var vc = validarCedula();
-    var vn = validarNA(document.getElementById('name'), 'mnombre');
-    var va = validarNA(document.getElementById('lastname'), 'mapellido')
-    var vf = validarFecha();
-    var vco = verificarCorreo();
-    var vps = verificarContrasena();
-    var vd = verificarDT(document.getElementById('address'), 'mdireccion');
-    var vt = verificarDT(document.getElementById('telf'), 'mtelefono');*/
+    var bandera = true;
     for(var i=0; i<8 ; i++){
         if(vgeneral[i]==false){
             bandera = false;
             i = 8;
         }
     }
-
-    if(vc==false || vn==false || va==false || vf==false || vco==false || vps==false){
-        bandera = false;
-    }else{
+    if(bandera==true){
         alert('Datos ingresados correctamente');
+    }else{
+        validarCedula(0);
+        validarNA(document.getElementById('name'), 'mnombre',1);
+        validarNA(document.getElementById('lastname'), 'mapellido',2)
+        verificarDT(document.getElementById('address'), 'mdireccion',3);
+        verificarDT(document.getElementById('telf'), 'mtelefono',4);
+        validarFecha(5);
+        verificarCorreo(6);
+        verificarContrasena(7);
     }
 
     return bandera;
@@ -79,7 +77,6 @@ function arreglo(inp, spa){
 function validarCedula (id){
     var bandera = true;
     var ced = document.getElementById("dni");
-    //console.log(ced.length)
     if(ced.value.length!==10 && ced.type == 'text'){
         error(ced, 'mcedula', '<br>Datos invalidos')
         bandera = false;
@@ -101,8 +98,6 @@ function validarCedula (id){
         var resul = isuperior - suma;
         resul = resul * 10;
         resul = Math.ceil(resul);
-        //console.log(resul)
-        //console.log(ced.value.charCodeAt(9)-48)
         if(resul !== (ced.value.charCodeAt(9)-48)){
             error(ced, 'mcedula', '<br>La cedula ingresada no es correcta')
             bandera = false;
@@ -114,11 +109,6 @@ function validarCedula (id){
         }
 
     }
-    /*
-    if(bandera == true){
-        alert('Cedula ingresada correctamente');
-    }*/
-
     return bandera;
 }
 
@@ -128,7 +118,6 @@ function validarNA(atri, men, id){
     var bandera = true;
     if(atri.value!==''){
         var partes = atri.value.split(" ");
-        //console.log(partes)
         if(partes.length !== 2 || partes[0]=='' || partes[1]==''){
             error(atri, men, '<br>Los datos ingresados no son aceptados')
             bandera = false;
@@ -143,16 +132,8 @@ function validarNA(atri, men, id){
         bandera = false;
         vgeneral[id]=bandera;
     }
-    /*
-    if(bandera == true){
-        alert('Nombres ingresados correctamente');
-    }*/
     return bandera;
 }
-
-
-//VALIDACION telefono
-
 
 
 //VALIDAR FECHA
@@ -190,10 +171,7 @@ function validarFecha(id){
             bandera = false;
             vgeneral[id]=bandera;
         }else{
-            //console.log(partes[0]);
-            //console.log(partes[1]);
-            //console.log(partes[2]);
-            if(partes[0]<32 && partes[1]<13 && partes[2]<2021){
+            if(partes[0]<32 && partes[1]<13 && partes[2]<2021 && partes[2]>=1900){
                 arreglo(document.getElementById("nac"), 'mnac');
                 bandera = true;
                 vgeneral[id]=bandera;
@@ -297,9 +275,16 @@ function verificarContrasena(id){
 function verificarDT(atrib, mens, id){
     var bandera = true;
     if(atrib.value.length > 0){
-        arreglo(atrib, mens);
-        bandera = true;
-        vgeneral[id]=bandera;
+        if(mens=='mtelefono' && atrib.value.length<10){
+            error(atrib, mens, '<br>El numero de telefono debe ser de 10 digitos')
+            bandera = false;
+            vgeneral[id]=bandera;
+        }else{
+            arreglo(atrib, mens);
+            bandera = true;
+            vgeneral[id]=bandera;
+        }
+        
     }else{
         error(atrib, mens, '<br>El campo esta vacio')
         bandera = false;

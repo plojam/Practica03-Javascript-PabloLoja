@@ -10,23 +10,23 @@
     <meta charset="utf-8" />
 </head>
 <body>
-    <form onsubmit="return validacion()">
+    <form onsubmit="return validacion()" action="verificado.php">
         <fieldset>
             <legend>Formulario</legend>
             <label>Cedula</label>
             <input type="text" id="dni" placeholder="Ej. 9999999999" onkeyup="return noLetras(this), validarCedula(0)" />
             <span id="mcedula" class="error"></span>
             <label>Nombres</label>
-            <input type="text" id="name" placeholder="Ej. Pablo Esteban" onkeyup="return noNumeros(this), validarNA(document.getElementById('name'), 'mnombre', 1)"/>
+            <input type="text" id="name" placeholder="Ej. Pablo Esteban" onkeyup="return noNumeros(this), validarNA(this, 'mnombre', 1)"/>
             <span id="mnombre" class="error"></span>
             <label>Apellidos</label>
-            <input type="text" id="lastname" placeholder="Ej. Loja Morocho" onkeyup="return noNumeros(this), validarNA(document.getElementById('lastname'), 'mapellido', 2)"/>
+            <input type="text" id="lastname" placeholder="Ej. Loja Morocho" onkeyup="return noNumeros(this), validarNA(this, 'mapellido', 2)"/>
             <span id="mapellido" class="error"></span>
             <label>Direccion</label>
-            <input type="text" id="address" placeholder="Ej. Av. calle1" onkeyup="return verificarDT(document.getElementById('address'), 'mdireccion', 3)"/>
+            <input type="text" id="address" placeholder="Ej. Av. calle1" onkeyup="return verificarDT(this, 'mdireccion', 3)"/>
             <span id="mdireccion" class="error"></span>
             <label>Telefono</label>
-            <input type="text" id="telf" placeholder="Ej. 9999999999" onkeyup="return noLetras(this), verificarDT(document.getElementById('telf'), 'mtelefono',4)"/>
+            <input type="text" id="telf" placeholder="Ej. 9999999999" onkeyup="return noLetras(this), verificarDT(this, 'mtelefono',4)"/>
             <span id="mtelefono" class="error"></span>
             <label>Fecha de nacimiento</label>
             <input type="text" id="nac" placeholder="Ej. 20/01/1999" onkeyup="return soloFecha(this), validarFecha(5)"/>
@@ -37,7 +37,7 @@
             <label>Contraseña</label>
             <input type="password" id="password" placeholder="Ej. Ingrese su contraseña aqui" onkeyup="verificarContrasena(7)"/>
             <span id="mcontrasena" class="error"></span>
-            <input id="agregar" type="submit" value="Agregar" />
+            <input id="agregar" type="submit" value="Agregar"/>
             <input id="cancelar" type="reset" value="Cancelar">
             <div></div>
         </fieldset>
