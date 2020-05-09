@@ -1,5 +1,5 @@
 body{
-    background-color: rgb(47, 58, 69);
+    background-color: rgb(185, 158, 66);
 }
 
 section{
@@ -11,7 +11,7 @@ section{
     margin-top: 13%;
     width: 33%;
     height: 50%;
-    background-color: darkgray;
+    background-color: rgb(51, 84, 98);
     border-radius: 10px;
 }
 
@@ -20,7 +20,7 @@ h2{
 }
 
 input[type=text]{
-    background-color: whitesmoke;
+    background-color: rgb(320, 230, 230);
     width: 94%;
     height: 35px;
     margin-left: 2%;
@@ -31,7 +31,7 @@ input[type=text]{
 }
 
 input[type=button]{
-    background-color: rgb(234, 234, 234);
+    background-color: rgb(105, 139, 145);
     float: left;
     margin: 2% 3%;
     width: 13%;
@@ -52,4 +52,12 @@ input[type=button]:hover{
 
 div{
     clear: both;
+}
+
+#C{
+    background-color: rgb(234, 149, 98);
+}
+
+#C:hover{
+    background-color: rgb(241, 184, 150);
 }

@@ -3,7 +3,11 @@ var listaIng = [
 ];
 var posicion=0;
 var imgs= [-1];
+
+//GENERAR IMAGENES
 function generarImagenes(){
+    clearInterval(sizq);
+    clearInterval(sder);
     imgs= [-1];
     var i=0;
     var ran;
@@ -32,73 +36,135 @@ function generarImagenes(){
     posicion=0;
     document.getElementById("anterior").disabled = true;
     document.getElementById("siguiente").disabled = false;
+    document.getElementById("d1").style.marginLeft='23%';
+    document.getElementById("d1").style.visibility = 'visible';
+    document.getElementById("d2").style.visibility = 'hidden';
     document.getElementById("i1").src = imgs[0];
 }
 
-function bloSu(){
-    //console.log(posicion)
-    if(posicion>2){
+
+
+//CAMBIAR IMAGENES SIGUIENTE
+var m;
+var l;
+
+var mizq=23;
+var lizq=95;
+function siguiente(){
+    
+    //console.log(imgs[posicion])
+    posicion++;
+    if(posicion%2==0){
+        document.getElementById('i1').src = imgs[posicion];
+        
+        m = document.getElementById('d2');
+        l = document.getElementById('d1');
+
+
+    }else{
+        document.getElementById('i2').src = imgs[posicion];
+        
+        m = document.getElementById('d1');
+        l = document.getElementById('d2');
+
+    }
+    mizq=23;
+    lizq=95;
+    l.style.marginLeft = '95%';
+    l.style.visibility = 'visible';
+    intervaloIzq();
+}
+
+function superior(){
+    if(posicion>3){
         document.getElementById("siguiente").disabled = true;
     }else{
         document.getElementById("anterior").disabled = false;
     }
 }
-function bloIn(){
+
+//movimiento a la izquerda
+var sizq;
+function intervaloIzq(){
+    sizq=setInterval(moverIzq, 15);
+}
+
+function moverIzq(){
+    if(lizq>23){
+        document.getElementById("siguiente").disabled = true;
+        document.getElementById("anterior").disabled = true;
+        mizq -= 1;
+        lizq -= 1;
+        //console.log(mizq)
+        m.style.marginLeft = mizq+'%';
+        l.style.marginLeft = lizq+'%';
+    }else{
+        document.getElementById("siguiente").disabled = false;
+        document.getElementById("anterior").disabled = false;
+        //console.log(mizq)
+        m.style.visibility = 'hidden';
+        superior();
+        clearInterval(sizq);
+    }
+    
+}
+
+
+//CAMBIAN IMAGENES ANTERIOR
+var mder=23;
+var lder=0;
+function anterior(){
     //console.log(posicion)
-    if(posicion<2){
+    
+    //console.log(imgs[posicion])
+    posicion--;
+    if(posicion%2==0){
+        document.getElementById('i1').src = imgs[posicion];
+        m = document.getElementById('d2');
+        l = document.getElementById('d1');
+
+    }else{
+        document.getElementById('i2').src = imgs[posicion];
+        m = document.getElementById('d1');
+        l = document.getElementById('d2');
+    }
+    
+    mder=23;
+    lder=-49;
+    l.style.marginLeft = lder+'%';
+    l.style.visibility = 'visible';
+    intervaloDer();
+}
+
+function inferior(){
+    if(posicion<1){
         document.getElementById("anterior").disabled = true;
     }else{
         document.getElementById("siguiente").disabled = false;
     }
 }
 
-function siguiente(){
-    console.log(imgs[posicion])
-    posicion++;
-    var as;
-    var pleft;
-    if(posicion%2==0){
-        document.getElementById('i1').src = imgs[posicion];
-        as =document.getElementById('a1');
-        console.log(as)
-        pleft = parseInt(as.style.left);
-
-        pleft = pleft-5;
-        as.style.left = pleft + "px";
-        pleft = pleft-5;
-        as.style.left = pleft + "px";
-        pleft = pleft-5;
-        as.style.left = pleft + "px";
-        pleft = pleft-5;
-        as.style.left = pleft + "px";
-
-
-    }else{
-        document.getElementById('i2').src = imgs[posicion];
-        as = document.getElementById('a2');
-        console.log(as)
-        pleft = parseInt(as.style.left);
-
-        pleft = pleft-5;
-        as.style.left = pleft + "px";
-        pleft = pleft-5;
-        as.style.left = pleft + "px";
-        pleft = pleft-5;
-        as.style.left = pleft + "px";
-        pleft = pleft-5;
-        as.style.left = pleft + "px";
-    }
+//movimiento a la derecha
+var sder;
+function intervaloDer(){
+    sder=setInterval(moverDer, 15);
 }
 
-function anterior(){
-    console.log(imgs[posicion])
-    posicion--;
-    if(posicion%2==0){
-        document.getElementById('i1').src = imgs[posicion];
-        //document.getElementById('a1');
-
+function moverDer(){
+    if(lder<23){
+        document.getElementById("siguiente").disabled = true;
+        document.getElementById("anterior").disabled = true;
+        mder += 1;
+        lder += 1;
+        m.style.marginLeft = mder+'%';
+        l.style.marginLeft = lder+'%';
     }else{
-        //document.getElementById('a2');
-        document.getElementById('i2').src = imgs[posicion];
+        document.getElementById("siguiente").disabled = false;
+        document.getElementById("anterior").disabled = false;
+        //console.log(mder)
+        m.style.visibility = 'hidden';
+        inferior();
+        clearInterval(sder);
     }
+    
 }
