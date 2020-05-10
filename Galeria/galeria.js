@@ -1,5 +1,7 @@
 var listaIng = [
-    "images/i0.jpg", "images/i1.jpg", "images/i2.jpg", "images/i3.jpg", "images/i4.jpg", "images/i5.jpg", "images/i6.jpg", "images/i7.jpg", "images/i8.jpg", "images/i9.jpg"
+    "images/i0.jpg", "images/i1.jpg", "images/i2.jpg", "images/i3.jpg", 
+    "images/i4.jpg", "images/i5.jpg", "images/i6.jpg", "images/i7.jpg", 
+    "images/i8.jpg", "images/i9.jpg"
 ];
 var posicion=0;
 var imgs= [-1];
@@ -30,9 +32,6 @@ function generarImagenes(){
     for(i=0; i<5; i++){
         imgs[i]=listaIng[imgs[i]];
     }
-    //console.log(imgs)
-    //var num = Math.round(Math.random()*9);
-    ///console.log(num);
     posicion=0;
     document.getElementById("anterior").disabled = true;
     document.getElementById("siguiente").disabled = false;
@@ -43,7 +42,6 @@ function generarImagenes(){
 }
 
 
-
 //CAMBIAR IMAGENES SIGUIENTE
 var m;
 var l;
@@ -51,22 +49,17 @@ var l;
 var mizq=23;
 var lizq=95;
 function siguiente(){
-    
-    //console.log(imgs[posicion])
     posicion++;
     if(posicion%2==0){
         document.getElementById('i1').src = imgs[posicion];
         
         m = document.getElementById('d2');
         l = document.getElementById('d1');
-
-
     }else{
         document.getElementById('i2').src = imgs[posicion];
         
         m = document.getElementById('d1');
         l = document.getElementById('d2');
-
     }
     mizq=23;
     lizq=95;
@@ -114,9 +107,6 @@ function moverIzq(){
 var mder=23;
 var lder=0;
 function anterior(){
-    //console.log(posicion)
-    
-    //console.log(imgs[posicion])
     posicion--;
     if(posicion%2==0){
         document.getElementById('i1').src = imgs[posicion];
@@ -128,7 +118,6 @@ function anterior(){
         m = document.getElementById('d1');
         l = document.getElementById('d2');
     }
-    
     mder=23;
     lder=-49;
     l.style.marginLeft = lder+'%';
@@ -161,10 +150,8 @@ function moverDer(){
     }else{
         document.getElementById("siguiente").disabled = false;
         document.getElementById("anterior").disabled = false;
-        //console.log(mder)
         m.style.visibility = 'hidden';
         inferior();
         clearInterval(sder);
     }
-    
 }

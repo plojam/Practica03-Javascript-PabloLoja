@@ -107,7 +107,6 @@ function validarCedula (id){
             bandera = true;
             vgeneral[id]=bandera;
         }
-
     }
     return bandera;
 }
@@ -128,7 +127,7 @@ function validarNA(atri, men, id){
             vgeneral[id]=bandera;
         }
     }else{
-        error(atri, men, '<br>Los datos ingresados no son aceptados')
+        error(atri, men, '<br>Debe ingresar mas informacion')
         bandera = false;
         vgeneral[id]=bandera;
     }
@@ -224,30 +223,21 @@ function verificarContrasena(id){
     var bandera = true;
     var senmayus = false;
     var senminus = false;
-    var may;
-    var min;
     var ltascii;
     var contra = document.getElementById('password').value;
-    
     if(contra.length>=8){
         if(contra.includes('_')==true || contra.includes('@')==true || contra.includes('$')==true){
-            
             for(var i=0; i<contra.length; i++){
                 ltascii = contra.charCodeAt(i);
-                if((ltascii>=65 && ltascii<=90) || (ltascii>=97 && ltascii<=122)){
-                    may = contra.charAt(i).toUpperCase();
-                    min = contra.charAt(i).toLowerCase();
-                    if(contra.charCodeAt(i)===may.charCodeAt(0)){
-                        senmayus = true;
-                    }
-                    if(contra.charCodeAt(i)===min.charCodeAt(0)){
-                        senminus = true;
-                    }
-                    if(senmayus==true && senminus==true){
-                        i = contra.length;
-                    }
+                if(ltascii>=65 && ltascii<=90){
+                    senmayus = true;
                 }
-                
+                if((ltascii>=97 && ltascii<=122)){
+                    senminus = true;
+                }
+                if(senmayus==true && senminus==true){
+                    i = contra.length;
+                }
             }
             if(senmayus==true && senminus==true){
                 arreglo(document.getElementById('password'), 'mcontrasena');
