@@ -35,7 +35,7 @@ function generarImagenes(){
     posicion=0;
     document.getElementById("anterior").disabled = true;
     document.getElementById("siguiente").disabled = false;
-    document.getElementById("d1").style.marginLeft='23%';
+    document.getElementById("d1").style.right='27%';
     document.getElementById("d1").style.visibility = 'visible';
     document.getElementById("d2").style.visibility = 'hidden';
     document.getElementById("i1").src = imgs[0];
@@ -46,8 +46,8 @@ function generarImagenes(){
 var m;
 var l;
 
-var mizq=23;
-var lizq=95;
+var mizq=27;
+var lizq=-60;
 function siguiente(){
     posicion++;
     if(posicion%2==0){
@@ -61,9 +61,8 @@ function siguiente(){
         m = document.getElementById('d1');
         l = document.getElementById('d2');
     }
-    mizq=23;
-    lizq=95;
-    l.style.marginLeft = '95%';
+    mizq=27;
+    lizq=-60;
     l.style.visibility = 'visible';
     intervaloIzq();
 }
@@ -83,18 +82,16 @@ function intervaloIzq(){
 }
 
 function moverIzq(){
-    if(lizq>23){
+    if(lizq<27){
         document.getElementById("siguiente").disabled = true;
         document.getElementById("anterior").disabled = true;
-        mizq -= 1;
-        lizq -= 1;
-        //console.log(mizq)
-        m.style.marginLeft = mizq+'%';
-        l.style.marginLeft = lizq+'%';
+        mizq += 1;
+        lizq += 1;
+        m.style.right = mizq+'%';
+        l.style.right = lizq+'%';
     }else{
         document.getElementById("siguiente").disabled = false;
         document.getElementById("anterior").disabled = false;
-        //console.log(mizq)
         m.style.visibility = 'hidden';
         superior();
         clearInterval(sizq);
@@ -104,8 +101,8 @@ function moverIzq(){
 
 
 //CAMBIAN IMAGENES ANTERIOR
-var mder=23;
-var lder=0;
+var mder=27;
+var lder=00;
 function anterior(){
     posicion--;
     if(posicion%2==0){
@@ -118,9 +115,8 @@ function anterior(){
         m = document.getElementById('d1');
         l = document.getElementById('d2');
     }
-    mder=23;
-    lder=-49;
-    l.style.marginLeft = lder+'%';
+    mder=27;
+    lder=100;
     l.style.visibility = 'visible';
     intervaloDer();
 }
@@ -140,13 +136,13 @@ function intervaloDer(){
 }
 
 function moverDer(){
-    if(lder<23){
+    if(lder>27){
         document.getElementById("siguiente").disabled = true;
         document.getElementById("anterior").disabled = true;
-        mder += 1;
-        lder += 1;
-        m.style.marginLeft = mder+'%';
-        l.style.marginLeft = lder+'%';
+        mder -= 1;
+        lder -= 1;
+        m.style.right = mder+'%';
+        l.style.right = lder+'%';
     }else{
         document.getElementById("siguiente").disabled = false;
         document.getElementById("anterior").disabled = false;
