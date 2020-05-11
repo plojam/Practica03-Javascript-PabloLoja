@@ -93,11 +93,12 @@ function validarCedula (id){
             }
             suma = suma + num;
         }
+        console.log(suma)
         suma = suma/10;
+        console.log(suma)
         var isuperior = Math.ceil(suma);
-        var resul = isuperior - suma;
-        resul = resul * 10;
-        resul = Math.ceil(resul);
+        console.log(isuperior)
+        var resul = eval(isuperior*10-suma*10)
         if(resul !== (ced.value.charCodeAt(9)-48)){
             error(ced, 'mcedula', '<br>La cedula ingresada no es correcta')
             bandera = false;
